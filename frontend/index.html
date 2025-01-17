@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token Address Extractor</title>
+</head>
+<body>
+  <h1>Token Address Extractor</h1>
+  <button id="processTokens">Process Tokens</button>
+  <a id="downloadLink" href="#" style="display: none;">Download Contract Addresses</a>
+
+  <script>
+    const processTokensButton = document.getElementById("processTokens");
+    const downloadLink = document.getElementById("downloadLink");
+
+    processTokensButton.addEventListener("click", async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:5000/process_tokens", {
+          method: "POST",
+        });
+
+        if (response.ok) {
+          alert("Tokens processed successfully!");
+          downloadLink.href = "http://127.0.0.1:5000/download_addresses";
+          downloadLink.style.display = "block";
+          downloadLink.textContent = "Download Contract Addresses";
+        } else {
+          const error = await response.json();
+          alert(`Error: ${error.error}`);
+        }
+      } catch (error) {
+        alert("Failed to connect to the server.");
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
