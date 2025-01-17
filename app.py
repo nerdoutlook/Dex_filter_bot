@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify
 import requests
-from apebot_v2 import fetch_tokens, save_ca_to_file
+from apebot_v2 import fetch_tokens, save_ca_to_file, filter_tokens
 
 app = Flask(__name__)
 
@@ -8,6 +8,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/fetch_tokens')
 def fetch_tokens_route():
     tokens = fetch_tokens()
     print(tokens)
