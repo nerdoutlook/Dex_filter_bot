@@ -5,36 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Token Fetcher</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
 </head>
 <body>
     <h1>Fetch Token Data</h1>
     <button onclick="fetchTokens()">Fetch Tokens</button>
-    <div id="token-list"></div> <!-- Area to display tokens -->
-    
+    <div id="token-list"></div> <!-- Token display area -->
+
     <script>
-    function fetchTokens() {
-        fetch('/fetch_tokens')
-            .then(response => response.json())
-            .then(tokens => {
-                console.log('Tokens:', tokens);  // Check the tokens returned
+        // Define the fetchTokens function globally
+        function fetchTokens() {
+            fetch('/fetch_tokens')
+                .then(response => response.json())
+                .then(tokens => {
+                    console.log('Tokens:', tokens); // Log tokens for debugging
 
-                const tokensContainer = document.getElementById('tokens-container');
-                tokensContainer.innerHTML = ''; // Clear previous data
+                    const tokensContainer = document.getElementById('token-list');
+                    tokensContainer.innerHTML = ''; // Clear previous content
 
-                if (tokens.length > 0) {
-                    tokens.forEach(token => {
-                        const tokenElement = document.createElement('div');
-                        tokenElement.classList.add('token');
-                        tokenElement.textContent = `Contract Address: ${token.contract_address}`;
-                        tokensContainer.appendChild(tokenElement);
-                    });
-                } else {
-                    tokensContainer.textContent = 'No tokens found';
-                }
-            })
-            .catch(error => console.error('Error fetching tokens:', error));
-    }
-</script>
+                    if (tokens.length > 0) {
+                        tokens.forEach(token => {
+                            const tokenElement = document.createElement('div');
+                            tokenElement.classList.add('token');
+                            tokenElement.textContent = `Contract Address: ${token.tokenAddress}`;
+                            tokensContainer.appendChild(tokenElement);
+                        });
+                    } else {
+                        tokensContainer.textContent = 'No tokens found';
+                    }
+                })
+                .catch(error => console.error('Error fetching tokens:', error));
+        }
+    </script>
 </body>
 </html>
