@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Fetcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style3.css') }}"> <!-- Link to CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Token Fetcher</h1>
+        <button onclick="fetchTokens()">Fetch Tokens</button>
+        <div id="tokens-container"></div> <!-- Token cards will be displayed here -->
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> <!-- Link to JavaScript -->
+</body>
+</html>
