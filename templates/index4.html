@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Fetcher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles4.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Token Fetcher</h1>
+        <button id="fetch-tokens-button">Fetch Tokens</button>
+        
+        <!-- Loading Bar -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div id="tokens-container" class="tokens-container"></div> <!-- Token cards -->
+    </div>
+    <script src="{{ url_for('static', filename='js/script3.js') }}"></script>
+</body>
+</html>

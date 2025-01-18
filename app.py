@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index2.html')
+    return render_template('index4.html')
 
 @app.route('/fetch_tokens')
 def fetch_tokens_route():
